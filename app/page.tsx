@@ -27,7 +27,7 @@ export default function HomePage() {
     '@type': 'HealthAndBeautyBusiness',
     name: 'Fada do Bumbum · Dra. Enyla Cerqueira',
     url: siteUrl,
-    image: `${siteUrl}/assets/img/enyla-consultorio-poltrona.webp`,
+    image: `${siteUrl}/assets/img/enyla-hero-recepcao.webp`,
     telephone: '+55 11 91848-6677',
     sameAs: [contact.instagram],
     address: {

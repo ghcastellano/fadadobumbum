@@ -128,14 +128,14 @@ export default function Hero() {
             <span aria-hidden="true" className="arch absolute -inset-6 hidden border border-gold/15 lg:block" />
             <motion.div style={reduced ? undefined : { scale: imageScale }} className="absolute inset-0 overflow-hidden lg:arch">
               <Image
-                src="/assets/img/enyla-consultorio-poltrona.webp"
-                alt="Dra. Enyla Cerqueira sentada em poltrona de veludo terracota, em frente ao ripado de madeira do consultório"
+                src="/assets/img/enyla-hero-recepcao.webp"
+                alt="Dra. Enyla Cerqueira na recepção da clínica, com pendentes de vidro e parede ripada ao fundo"
                 fill
                 priority
                 fetchPriority="high"
                 quality={85}
                 sizes="(max-width: 1023px) 100vw, 500px"
-                className="kenburns object-cover object-[50%_18%]"
+                className="kenburns object-cover object-[50%_0%]"
               />
             </motion.div>
             {/* scrims só no celular: contraste do texto sobre a foto */}

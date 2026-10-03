@@ -152,9 +152,11 @@ img, video { max-width: 100%; }
   background-size: calc(100% / 6) 100%, 100% 8rem;
 }
 
-/* arco: a curva como assinatura visual */
-.arch { border-radius: 999px 999px 18px 18px; }
-.arch-full { border-radius: 999px 999px 999px 999px; }
+/* arco: a curva como assinatura visual (em components para aceitar lg:arch) */
+@layer components {
+  .arch { border-radius: 999px 999px 18px 18px; }
+  .arch-full { border-radius: 999px 999px 999px 999px; }
+}
 
 /* ---------- marquee ---------- */
 @keyframes marquee-x {
