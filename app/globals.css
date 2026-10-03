@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --espresso: #1d1310;
+  --cacao: #2e1f19;
+  --wood: #6f4130;
+  --terracotta: #b06b58;
+  --rose: #d9a395;
+  --blush: #ecd3c8;
+  --nude: #f1e4da;
+  --cream: #f7f0e8;
+  --ivory: #fbf8f4;
+  --gold: #c9a27a;
+  --gold-deep: #83592f;
+  --ink: #2a1b15;
+  --bordo: #4a2130;
+  --copper: #b8734a;
+  --jade: #6f9a8f;
+  --header-h: 76px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  background: var(--cream);
+  scrollbar-color: var(--gold) var(--cream);
+  scrollbar-width: thin;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  overflow-x: clip;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--terracotta); color: #fff; }
+
+a { color: inherit; text-decoration: none; }
+button, input, textarea, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+img, video { max-width: 100%; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { border: 2px solid var(--cream); background: var(--gold); border-radius: 8px; }
+
+.container-shell {
+  width: min(100% - 40px, 1440px);
+  margin-inline: auto;
+}
+
+/* ---------- tipografia editorial ---------- */
+.eyebrow {
+  font-size: .78rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  text-wrap: pretty;
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 1.75rem;
+  height: 1px;
+  margin-right: .7rem;
+  vertical-align: middle;
+  background: currentColor;
+  opacity: .6;
+}
+
+.display {
+  font-family: var(--font-display), serif;
+  font-weight: 400;
+  letter-spacing: -.005em;
+  text-wrap: balance;
+}
+.display em, .display i { font-style: italic; }
+
+.font-signature { font-family: var(--font-script), cursive; font-weight: 400; }
+
+.text-outline {
+  -webkit-text-stroke: 1px currentColor;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dourado "pó de fada": brilho que atravessa o texto devagar. */
+.shimmer {
+  background: linear-gradient(100deg, #b98a5c 0%, #e8cfa8 22%, #c9a27a 40%, #f3e2c4 50%, #c9a27a 60%, #a8794b 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 7s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 100% 50%; }
+  50% { background-position: 0% 50%; }
+}
+
+/* máscara de linha para revelar letra a letra */
+.line-mask {
+  display: block;
+  overflow: hidden;
+  padding-block: .14em;
+  margin-block: -.14em;
+}
+.line-mask > span { display: inline-block; will-change: transform; }
+
+/* ---------- texturas ---------- */
+.noise { position: relative; }
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+/* Ripado de madeira do consultório, desenhado em CSS (sem imagem). */
+.slats {
+  background-color: #241711;
+  background-image:
+    radial-gradient(120% 80% at 70% 20%, rgba(201,162,122,.16), transparent 60%),
+    repeating-linear-gradient(90deg,
+      rgba(0,0,0,.34) 0 2px,
+      rgba(111,65,48,.22) 2px 5px,
+      rgba(140,86,62,.18) 5px 24px,
+      rgba(90,52,38,.25) 24px 27px,
+      rgba(0,0,0,.28) 27px 29px);
+}
+
+.editorial-grid {
+  background-image:
+    linear-gradient(to right, rgba(42,27,21,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(42,27,21,.035) 1px, transparent 1px);
+  background-size: calc(100% / 6) 100%, 100% 8rem;
+}
+
+/* arco: a curva como assinatura visual */
+.arch { border-radius: 999px 999px 18px 18px; }
+.arch-full { border-radius: 999px 999px 999px 999px; }
+
+/* ---------- marquee ---------- */
+@keyframes marquee-x {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: marquee-x var(--marquee-duration, 46s) linear infinite;
+}
+
+/* selo giratório */
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 26s linear infinite; }
+
+/* pulso dos pontos do mapa */
+@keyframes ping-soft {
+  0% { transform: scale(.6); opacity: .9; }
+  80%, 100% { transform: scale(2.4); opacity: 0; }
+}
+.ping-soft { animation: ping-soft 2.4s cubic-bezier(0, 0, .2, 1) infinite; transform-origin: center; transform-box: fill-box; }
+
+/* Ken Burns lento */
+@keyframes kenburns {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+.kenburns { animation: kenburns 9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+/* ---------- acessibilidade ---------- */
+.focus-ring:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="slider"]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: .75rem;
+  left: .75rem;
+  transform: translateY(-160%);
+  background: var(--espresso);
+  color: #fff;
+  padding: .75rem 1rem;
+  transition: transform .2s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* ---------- Lenis ---------- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- cursor customizado ---------- */
+html.fx-cursor, html.fx-cursor * { cursor: none !important; }
+html.fx-cursor input,
+html.fx-cursor textarea,
+html.fx-cursor select { cursor: text !important; }
+
+@media (max-width: 768px) {
+  :root { --header-h: 68px; }
+  .container-shell { width: min(100% - 32px, 1440px); }
+  .editorial-grid { background-size: calc(100% / 2) 100%, 100% 7rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+  .marquee-track, .spin-slow, .shimmer, .ping-soft { animation: none; }
+}
+
+/* ---------- intro (1ª visita da sessão): assinatura + cortina ---------- */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  background: var(--espresso);
+  color: var(--gold);
+  pointer-events: none;
+  animation: intro-out .95s cubic-bezier(.76, 0, .24, 1) 1.65s forwards;
+}
+.intro svg { width: min(78vw, 560px); height: auto; overflow: visible; }
+.intro path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  fill-opacity: 0;
+  animation: sig-draw .8s cubic-bezier(.45, 0, .2, 1) forwards, sig-fill .45s ease-out forwards;
+  animation-delay: calc(var(--i) * 62ms), calc(var(--i) * 62ms + 480ms);
+}
+.intro p { animation: intro-fade .8s ease .5s both; }
+@keyframes sig-draw { to { stroke-dashoffset: 0; } }
+@keyframes sig-fill { to { fill-opacity: 1; } }
+@keyframes intro-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes intro-out { to { transform: translateY(-100%); visibility: hidden; } }
+html.intro-seen .intro { display: none; }
+@media (prefers-reduced-motion: reduce), (max-width: 767px) { .intro { display: none; } }
+
+/* ---------- título do hero (CSS puro, sem esperar hidratação) ---------- */
+@keyframes hero-rise { from { transform: translateY(112%) rotate(4deg); } to { transform: none; } }
+.hero-rise { animation: hero-rise .95s cubic-bezier(.22, 1, .36, 1) both; animation-delay: calc(var(--d, 0s) + var(--intro, 0s)); will-change: transform; }
+html:not(.intro-seen) .hero-rise { --intro: 1.7s; }
+@keyframes hero-fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.hero-fade { animation: hero-fade .9s cubic-bezier(.22, 1, .36, 1) both; animation-delay: calc(var(--d, 0s) + var(--intro, 0s)); }
+html:not(.intro-seen) .hero-fade { --intro: 1.7s; }
