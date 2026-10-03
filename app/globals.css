@@ -6,10 +6,10 @@
   --espresso: #1d1310;
   --cacao: #2e1f19;
   --wood: #6f4130;
-  --terracotta: #b06b58;
-  --rose: #d9a395;
-  --blush: #ecd3c8;
-  --nude: #f1e4da;
+  --rosedeep: #9e5a66;
+  --rose: #e3b5b3;
+  --blush: #f3dedb;
+  --nude: #f8ebe7;
   --cream: #f7f0e8;
   --ivory: #fbf8f4;
   --gold: #c9a27a;
@@ -45,7 +45,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-::selection { background: var(--terracotta); color: #fff; }
+::selection { background: var(--rosedeep); color: #fff; }
 
 a { color: inherit; text-decoration: none; }
 button, input, textarea, select { font: inherit; }
@@ -98,7 +98,7 @@ img, video { max-width: 100%; }
 
 /* Dourado "pó de fada": brilho que atravessa o texto devagar. */
 .shimmer {
-  background: linear-gradient(100deg, #b98a5c 0%, #e8cfa8 22%, #c9a27a 40%, #f3e2c4 50%, #c9a27a 60%, #a8794b 100%);
+  background: linear-gradient(100deg, #c9a27a 0%, #e8cfa8 18%, #e9b9b6 36%, #f6e4cf 50%, #dca5a8 64%, #c9a27a 82%, #b08250 100%);
   background-size: 250% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -136,6 +136,7 @@ img, video { max-width: 100%; }
   background-color: #241711;
   background-image:
     radial-gradient(120% 80% at 70% 20%, rgba(201,162,122,.16), transparent 60%),
+    radial-gradient(80% 60% at 15% 90%, rgba(227,181,179,.14), transparent 65%),
     repeating-linear-gradient(90deg,
       rgba(0,0,0,.34) 0 2px,
       rgba(111,65,48,.22) 2px 5px,

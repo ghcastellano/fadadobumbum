@@ -30,7 +30,7 @@ export default function Quiz() {
         <div className="lg:col-span-7">
           <Reveal><p className="eyebrow text-gold-deep">Mapa do seu objetivo</p></Reveal>
           <Reveal delay={.06}>
-            <h2 id="avaliacao-titulo" className="display mt-6 text-[clamp(2.5rem,5vw,4.6rem)] leading-[1.03]">Conte o que te incomoda. <em className="text-terracotta">A mensagem sai pronta.</em></h2>
+            <h2 id="avaliacao-titulo" className="display mt-6 text-[clamp(2.5rem,5vw,4.6rem)] leading-[1.03]">Conte o que te incomoda. <em className="text-rosedeep">A mensagem sai pronta.</em></h2>
           </Reveal>
 
           <Reveal delay={.1}>
@@ -40,7 +40,7 @@ export default function Quiz() {
                 {quizGoals.map((goal) => {
                   const on = goals.includes(goal);
                   return (
-                    <button key={goal} type="button" aria-pressed={on} onClick={() => toggle(goal)} className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-5 text-[15px] transition-all duration-300 ${on ? 'border-terracotta bg-terracotta text-ivory shadow-[0_8px_24px_rgba(176,107,88,.3)]' : 'border-ink/20 bg-ivory/60 text-ink hover:border-terracotta'}`}>
+                    <button key={goal} type="button" aria-pressed={on} onClick={() => toggle(goal)} className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-5 text-[15px] transition-all duration-300 ${on ? 'border-rosedeep bg-rosedeep text-ivory shadow-[0_8px_24px_rgba(158,90,102,.3)]' : 'border-ink/20 bg-ivory/60 text-ink hover:border-rosedeep'}`}>
                       {on && <Check className="h-4 w-4" />} {goal}
                     </button>
                   );
@@ -65,7 +65,7 @@ export default function Quiz() {
           <Reveal delay={.14}>
             <label className="mt-9 block max-w-sm">
               <span className="text-[11px] font-medium uppercase tracking-[.22em] text-ink/75">3 · Seu primeiro nome <span className="normal-case tracking-normal text-ink/60">(opcional)</span></span>
-              <input value={name} onChange={(e) => setName(e.target.value.slice(0, 40))} autoComplete="given-name" placeholder="Como você gosta de ser chamada" className="mt-3 h-12 w-full rounded-full border border-ink/20 bg-ivory/70 px-5 text-base outline-none transition-colors placeholder:text-ink/45 focus:border-terracotta" />
+              <input value={name} onChange={(e) => setName(e.target.value.slice(0, 40))} autoComplete="given-name" placeholder="Como você gosta de ser chamada" className="mt-3 h-12 w-full rounded-full border border-ink/20 bg-ivory/70 px-5 text-base outline-none transition-colors placeholder:text-ink/45 focus:border-rosedeep" />
             </label>
           </Reveal>
         </div>

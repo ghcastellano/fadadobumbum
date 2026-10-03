@@ -65,13 +65,13 @@ function ContourMap() {
           <svg viewBox="0 0 420 620" className="h-auto w-full" role="img" aria-label="Desenho de perfil do glúteo com quatro pontos estratégicos do planejamento">
             <defs>
               <radialGradient id="map-glow" cx="35%" cy="52%" r="50%">
-                <stop offset="0" stopColor="#ecd3c8" stopOpacity=".95" />
-                <stop offset="1" stopColor="#ecd3c8" stopOpacity="0" />
+                <stop offset="0" stopColor="#f3dedb" stopOpacity=".95" />
+                <stop offset="1" stopColor="#f3dedb" stopOpacity="0" />
               </radialGradient>
               <linearGradient id="map-fill" x1="0" x2="1" y1="0" y2="0">
-                <stop offset="0" stopColor="#d9a395" stopOpacity=".55" />
-                <stop offset=".6" stopColor="#ecd3c8" stopOpacity=".35" />
-                <stop offset="1" stopColor="#ecd3c8" stopOpacity=".15" />
+                <stop offset="0" stopColor="#e3b5b3" stopOpacity=".55" />
+                <stop offset=".6" stopColor="#f3dedb" stopOpacity=".35" />
+                <stop offset="1" stopColor="#f3dedb" stopOpacity=".15" />
               </linearGradient>
               <linearGradient id="map-fade" x1="0" x2="0" y1="0" y2="1">
                 <stop offset="0" stopColor="#fff" stopOpacity="0" />
@@ -82,7 +82,7 @@ function ContourMap() {
               <mask id="map-mask"><rect width="420" height="620" fill="url(#map-fade)" /></mask>
               <linearGradient id="map-stroke" x1="0" x2="0" y1="0" y2="1">
                 <stop offset="0" stopColor="#c9a27a" />
-                <stop offset=".55" stopColor="#b06b58" />
+                <stop offset=".55" stopColor="#9e5a66" />
                 <stop offset="1" stopColor="#83592f" />
               </linearGradient>
             </defs>
@@ -99,15 +99,15 @@ function ContourMap() {
             <motion.path d={dFill} fill="url(#map-fill)" mask="url(#map-mask)" initial={reduced ? false : { opacity: 0 }} animate={inView ? { opacity: 1 } : undefined} transition={{ duration: 1.2, delay: .8 }} />
             <motion.path d={ANTERIOR} fill="none" stroke="url(#map-stroke)" strokeWidth="2" strokeLinecap="round" initial={reduced ? false : { pathLength: 0 }} animate={inView ? { pathLength: 1 } : undefined} transition={{ duration: 1.6, ease: [0.65, 0, 0.35, 1] }} />
             <motion.path d={dPost} fill="none" stroke="url(#map-stroke)" strokeWidth="2.4" strokeLinecap="round" initial={reduced ? false : { pathLength: 0 }} animate={inView ? { pathLength: 1 } : undefined} transition={{ duration: 1.8, ease: [0.65, 0, 0.35, 1] }} />
-            <motion.path d={dFold} fill="none" stroke="#b06b58" strokeOpacity=".7" strokeWidth="1.6" strokeLinecap="round" />
-            <motion.path d={dDip} fill="none" stroke="#b06b58" strokeOpacity=".55" strokeWidth="1.4" strokeDasharray="3 5" strokeLinecap="round" />
+            <motion.path d={dFold} fill="none" stroke="#9e5a66" strokeOpacity=".7" strokeWidth="1.6" strokeLinecap="round" />
+            <motion.path d={dDip} fill="none" stroke="#9e5a66" strokeOpacity=".55" strokeWidth="1.4" strokeDasharray="3 5" strokeLinecap="round" />
 
             {mapPoints.map((p) => {
               const on = p.id === active;
               return (
                 <g key={p.id}>
-                  <circle cx={p.x} cy={p.y} r="9" fill="#b06b58" fillOpacity=".25" className="ping-soft" />
-                  <circle cx={p.x} cy={p.y} r={on ? 9 : 7} fill={on ? '#b06b58' : '#fbf8f4'} stroke="#b06b58" strokeWidth="2" style={{ transition: 'all .3s ease' }} />
+                  <circle cx={p.x} cy={p.y} r="9" fill="#9e5a66" fillOpacity=".25" className="ping-soft" />
+                  <circle cx={p.x} cy={p.y} r={on ? 9 : 7} fill={on ? '#9e5a66' : '#fbf8f4'} stroke="#9e5a66" strokeWidth="2" style={{ transition: 'all .3s ease' }} />
                   <text x={p.x + (p.id === 'lat' ? 16 : -16)} y={p.y + 4} textAnchor={p.id === 'lat' ? 'start' : 'end'} fontSize="13" fontFamily="var(--font-sans)" fill="#2a1b15" fillOpacity={on ? 1 : .55} letterSpacing="1.5">{p.label}</text>
                 </g>
               );
@@ -135,7 +135,7 @@ function ContourMap() {
                 type="button"
                 onClick={() => setActive(p.id)}
                 aria-pressed={p.id === active}
-                className={`min-h-10 rounded-full border px-4 text-[13px] transition-colors duration-300 ${p.id === active ? 'border-terracotta bg-terracotta text-ivory' : 'border-ink/20 text-ink/80 hover:border-terracotta hover:text-terracotta'}`}
+                className={`min-h-10 rounded-full border px-4 text-[13px] transition-colors duration-300 ${p.id === active ? 'border-rosedeep bg-rosedeep text-ivory' : 'border-ink/20 text-ink/80 hover:border-rosedeep hover:text-rosedeep'}`}
               >
                 {p.label} · {p.title}
               </button>
@@ -162,7 +162,7 @@ function ContourMap() {
               value={value}
               onChange={(e) => t.set(Number(e.target.value) / 100)}
               aria-valuetext={`${value}% do planejamento`}
-              className="mt-3 h-11 w-full cursor-pointer appearance-none bg-transparent accent-[#b06b58] [&::-webkit-slider-runnable-track]:h-[3px] [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-gradient-to-r [&::-webkit-slider-runnable-track]:from-blush [&::-webkit-slider-runnable-track]:to-terracotta [&::-webkit-slider-thumb]:-mt-[10px] [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-ivory [&::-webkit-slider-thumb]:bg-terracotta [&::-webkit-slider-thumb]:shadow-[0_4px_14px_rgba(176,107,88,.45)]"
+              className="mt-3 h-11 w-full cursor-pointer appearance-none bg-transparent accent-[#9e5a66] [&::-webkit-slider-runnable-track]:h-[3px] [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-gradient-to-r [&::-webkit-slider-runnable-track]:from-blush [&::-webkit-slider-runnable-track]:to-rosedeep [&::-webkit-slider-thumb]:-mt-[10px] [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-ivory [&::-webkit-slider-thumb]:bg-rosedeep [&::-webkit-slider-thumb]:shadow-[0_4px_14px_rgba(158,90,102,.45)]"
             />
             <p className="mt-2 text-[13px] leading-relaxed text-ink/65">Arraste para ver como pequenos ajustes em pontos estratégicos mudam o desenho. A indicação real é individual e definida na avaliação.</p>
           </div>
@@ -175,20 +175,20 @@ function ContourMap() {
 export default function Treatment() {
   return (
     <section id="harmonizacao" aria-labelledby="harmonizacao-titulo" className="relative overflow-hidden bg-nude py-24 sm:py-28 lg:py-36">
-      <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(217,163,149,.45),transparent_65%)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(227,181,179,.45),transparent_65%)]" />
       <div className="container-shell relative grid gap-14 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-5">
           <SectionHeading
             id="harmonizacao-titulo"
             eyebrow="Harmonização glútea"
-            title={<>Curvas desenhadas <em className="text-terracotta">ponto a ponto.</em></>}
+            title={<>Curvas desenhadas <em className="text-rosedeep">ponto a ponto.</em></>}
             text="Não é encher. É planejar onde um volume sutil muda o contorno — e deixar o resto exatamente como é: seu."
           />
           <ul className="mt-10 grid gap-0 border-t border-ink/15">
             {procedureFacts.map((fact, index) => (
               <li key={fact.title}>
                 <Reveal delay={index * .05} className="flex gap-4 border-b border-ink/15 py-5">
-                  <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-terracotta text-ivory"><Check className="h-4 w-4" /></span>
+                  <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-rosedeep text-ivory"><Check className="h-4 w-4" /></span>
                   <span>
                     <span className="block font-display text-2xl leading-tight">{fact.title}</span>
                     <span className="mt-1 block text-base text-ink/75">{fact.text}</span>

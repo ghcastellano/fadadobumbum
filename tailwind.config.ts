@@ -5,15 +5,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Paleta tirada do próprio Instagram da Dra. Enyla: ripado de madeira,
-        // poltronas de veludo terracota, cards creme e detalhes dourados.
+        // Cores principais da marca (pedido da Dra. Enyla): dourado e rosé.
+        // Madeira, creme e espresso vêm do consultório e do Instagram.
         espresso: '#1d1310',
         cacao: '#2e1f19',
         wood: '#6f4130',
-        terracotta: '#b06b58',
-        rose: '#d9a395',
-        blush: '#ecd3c8',
-        nude: '#f1e4da',
+        rosedeep: '#9e5a66',
+        rose: '#e3b5b3',
+        blush: '#f3dedb',
+        nude: '#f8ebe7',
         cream: '#f7f0e8',
         ivory: '#fbf8f4',
         gold: '#c9a27a',

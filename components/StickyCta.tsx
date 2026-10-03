@@ -35,7 +35,7 @@ export default function StickyCta() {
             rel="noopener noreferrer"
             data-sparkle
             aria-label="Agendar avaliação com a Dra. Enyla pelo WhatsApp"
-            className="flex min-h-[56px] items-center justify-center gap-3 rounded-full bg-espresso px-7 text-sm font-medium uppercase tracking-[.12em] text-cream shadow-[0_14px_40px_rgba(29,19,16,.35)] ring-1 ring-gold/40 transition-colors duration-300 hover:bg-terracotta"
+            className="flex min-h-[56px] items-center justify-center gap-3 rounded-full bg-espresso px-7 text-sm font-medium uppercase tracking-[.12em] text-cream shadow-[0_14px_40px_rgba(29,19,16,.35)] ring-1 ring-gold/40 transition-colors duration-300 hover:bg-rosedeep"
           >
             <span className="grid h-8 w-8 place-items-center rounded-full bg-[#25D366] text-white"><WhatsIcon className="h-4 w-4" /></span>
             Agendar avaliação

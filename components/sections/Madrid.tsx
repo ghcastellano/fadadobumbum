@@ -48,7 +48,7 @@ function BoardingPass() {
       className="absolute -bottom-24 -right-1 w-[min(76%,270px)] sm:-right-10 lg:-bottom-28 lg:-right-16"
     >
       <div className="relative overflow-hidden rounded-2xl bg-ivory text-ink shadow-[0_30px_70px_rgba(42,27,21,.28)] ring-1 ring-ink/10">
-        <div className="flex items-center justify-between bg-terracotta px-4 py-2.5 text-[10px] font-medium uppercase tracking-[.26em] text-ivory">
+        <div className="flex items-center justify-between bg-rosedeep px-4 py-2.5 text-[10px] font-medium uppercase tracking-[.26em] text-ivory">
           <span>Cartão de embarque</span><Plane className="h-3.5 w-3.5" />
         </div>
         <div className="grid grid-cols-[1fr_auto_1fr] items-end gap-2 px-4 pt-4">
@@ -68,7 +68,7 @@ function BoardingPass() {
           <div className="flex h-8 items-stretch gap-[2px]" aria-hidden="true">
             {BARS.map((w, i) => <span key={i} className="bg-ink/80" style={{ width: w }} />)}
           </div>
-          <span className="font-display text-xl italic text-terracotta">2026</span>
+          <span className="font-display text-xl italic text-rosedeep">2026</span>
         </div>
       </div>
     </motion.div>
@@ -93,8 +93,8 @@ function FlightPath() {
           animate={inView ? { pathLength: 1 } : undefined}
           transition={{ duration: 2.4, ease: [0.65, 0, 0.35, 1] }}
         />
-        <circle cx="24" cy="140" r="6" fill="#b06b58" />
-        <circle cx="24" cy="140" r="12" fill="none" stroke="#b06b58" strokeOpacity=".35" />
+        <circle cx="24" cy="140" r="6" fill="#9e5a66" />
+        <circle cx="24" cy="140" r="12" fill="none" stroke="#9e5a66" strokeOpacity=".35" />
         <motion.g initial={reduced ? false : { opacity: 0, scale: .4 }} animate={inView ? { opacity: 1, scale: 1 } : undefined} transition={{ delay: 2.2, duration: .5 }} style={{ transformOrigin: '496px 104px' }}>
           <circle cx="496" cy="104" r="6" fill="#83592f" />
           <circle cx="496" cy="104" r="12" fill="none" stroke="#83592f" strokeOpacity=".35" />
@@ -127,7 +127,7 @@ export default function Madrid() {
       <motion.p
         aria-hidden="true"
         style={reduced ? undefined : { x }}
-        className="text-outline pointer-events-none absolute left-0 top-10 whitespace-nowrap font-display text-[clamp(8rem,24vw,22rem)] italic leading-none text-terracotta/25"
+        className="text-outline pointer-events-none absolute left-0 top-10 whitespace-nowrap font-display text-[clamp(8rem,24vw,22rem)] italic leading-none text-rosedeep/25"
       >
         Madrid · España · Madrid
       </motion.p>
@@ -153,7 +153,7 @@ export default function Madrid() {
           <Reveal><p className="eyebrow text-gold-deep">Pós-graduação internacional</p></Reveal>
           <Reveal delay={.06}>
             <h2 id="madrid-titulo" className="display mt-6 text-[clamp(2.6rem,5.4vw,5rem)] leading-[1.02]">
-              De São Paulo a <em className="text-terracotta">Madrid</em> — e de volta para você.
+              De São Paulo a <em className="text-rosedeep">Madrid</em> — e de volta para você.
             </h2>
           </Reveal>
           <Reveal delay={.1}>

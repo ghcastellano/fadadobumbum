@@ -45,7 +45,7 @@ function Shot({ src, alt, label, className = '', n = 0 }: { src: string; alt: st
   );
 }
 
-const check = <span aria-hidden="true" className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-terracotta text-[11px] text-ivory">✓</span>;
+const check = <span aria-hidden="true" className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-rosedeep text-[11px] text-ivory">✓</span>;
 
 export default function Oferta() {
   return (
@@ -244,7 +244,7 @@ export default function Oferta() {
             {market.map((m, i) => (
               <div key={m.tier} className="of-reveal grid items-center gap-x-6 gap-y-1 border-t border-cream/15 pt-3 md:grid-cols-[230px_1fr_200px]" style={d(3 + i)}>
                 <p className="font-display text-2xl">{m.tier}</p>
-                <div className="h-3 overflow-hidden rounded-full bg-cream/10"><div className="of-bar-fill h-full rounded-full bg-gradient-to-r from-terracotta to-gold" style={{ width: `${m.level * 100}%` }} /></div>
+                <div className="h-3 overflow-hidden rounded-full bg-cream/10"><div className="of-bar-fill h-full rounded-full bg-gradient-to-r from-rosedeep to-gold" style={{ width: `${m.level * 100}%` }} /></div>
                 <p className="text-right font-display text-2xl text-gold">{m.range}</p>
                 <p className="text-[13px] text-cream/60 md:col-start-2">{m.note}</p>
               </div>
@@ -291,14 +291,14 @@ export default function Oferta() {
           </Heading>
           <div className="grid gap-4 lg:grid-cols-3">
             {plans.map((p, i) => (
-              <article key={p.name} className={`of-card of-reveal relative grid content-start gap-3 !p-6 ${p.featured ? 'ring-2 ring-terracotta' : ''}`} style={d(3 + i)}>
-                {p.featured && <span className="absolute -top-3 right-6 rounded-full bg-terracotta px-3 py-1 text-[10.5px] font-medium uppercase tracking-[.18em] text-ivory">Recomendado</span>}
+              <article key={p.name} className={`of-card of-reveal relative grid content-start gap-3 !p-6 ${p.featured ? 'ring-2 ring-rosedeep' : ''}`} style={d(3 + i)}>
+                {p.featured && <span className="absolute -top-3 right-6 rounded-full bg-rosedeep px-3 py-1 text-[10.5px] font-medium uppercase tracking-[.18em] text-ivory">Recomendado</span>}
                 <div>
                   <h3>{p.name}</h3>
                   <p className="!mt-1">{p.tagline}</p>
                 </div>
                 <p className="!mt-1 font-display text-[2.8rem] leading-none text-ink">{brl(p.price)}<span className="font-sans text-base text-ink/60">/mês</span></p>
-                {p.minimum && <p className="!mt-0 text-[12px] uppercase tracking-[.16em] text-terracotta">{p.minimum}</p>}
+                {p.minimum && <p className="!mt-0 text-[12px] uppercase tracking-[.16em] text-rosedeep">{p.minimum}</p>}
                 <ul className="grid gap-2 border-t border-ink/10 pt-3 text-[14px] leading-snug text-ink/80">
                   {p.items.map((t) => <li key={t} className="flex gap-3">{check}<span>{t}</span></li>)}
                 </ul>

@@ -79,7 +79,7 @@ export default function Header() {
               rel="noopener noreferrer"
               data-sparkle
               className={`ml-1 inline-flex min-h-11 items-center gap-2.5 rounded-full border px-5 transition-colors duration-300 ${
-                light ? 'border-cream/50 hover:border-gold hover:bg-gold hover:text-espresso' : 'border-ink bg-ink text-cream hover:border-terracotta hover:bg-terracotta'
+                light ? 'border-cream/50 hover:border-gold hover:bg-gold hover:text-espresso' : 'border-ink bg-ink text-cream hover:border-rosedeep hover:bg-rosedeep'
               }`}
             >
               Agendar avaliação <ArrowUpRight className="h-3.5 w-3.5" />

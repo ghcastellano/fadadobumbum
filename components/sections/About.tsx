@@ -30,7 +30,7 @@ export default function About() {
           <Reveal><p className="eyebrow text-gold-deep">A Dra.</p></Reveal>
           <Reveal delay={.06}>
             <h2 id="sobre-titulo" className="display mt-7 text-[clamp(2.8rem,5.6vw,5.4rem)] leading-[1]">
-              Prazer, <em className="text-terracotta">Enyla</em>.
+              Prazer, <em className="text-rosedeep">Enyla</em>.
             </h2>
           </Reveal>
           <Reveal delay={.1}>
@@ -48,7 +48,7 @@ export default function About() {
             {principles.map((item, index) => (
               <Reveal key={item.title} delay={index * .06}>
                 <div className="group grid gap-3 border-b border-ink/15 py-7 sm:grid-cols-[84px_minmax(0,1fr)] sm:gap-6">
-                  <span aria-hidden="true" className="text-outline font-display text-5xl text-ink/35 transition-colors duration-500 group-hover:text-terracotta">0{index + 1}</span>
+                  <span aria-hidden="true" className="text-outline font-display text-5xl text-ink/35 transition-colors duration-500 group-hover:text-rosedeep">0{index + 1}</span>
                   <div>
                     <h3 className="font-display text-3xl leading-tight">{item.title}</h3>
                     <p className="mt-2 text-base text-ink/80">{item.text}</p>

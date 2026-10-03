@@ -120,14 +120,14 @@ export default function Clinic() {
               {mapOn ? (
                 <iframe title="Mapa da clínica na Rua Haddock Lobo, 578" src={mapsEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="h-full w-full border-0 [filter:sepia(.25)_saturate(.85)]" allowFullScreen />
               ) : (
-                <button type="button" onClick={() => setMapOn(true)} className="group grid h-full w-full place-items-center bg-[radial-gradient(circle_at_50%_45%,rgba(176,107,88,.2),transparent_55%)] text-ink">
+                <button type="button" onClick={() => setMapOn(true)} className="group grid h-full w-full place-items-center bg-[radial-gradient(circle_at_50%_45%,rgba(158,90,102,.2),transparent_55%)] text-ink">
                   <span aria-hidden="true" className="absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(42,27,21,.07)_1px,transparent_1px),linear-gradient(90deg,rgba(42,27,21,.07)_1px,transparent_1px)] [background-size:44px_44px]" />
                   <span className="relative flex flex-col items-center gap-4">
                     <span className="relative grid h-16 w-16 place-items-center rounded-full bg-jade text-ivory shadow-[0_14px_40px_rgba(111,154,143,.45)]">
                       <span className="ping-soft absolute inset-0 rounded-full bg-jade/40" />
                       <MapPin className="relative h-7 w-7" />
                     </span>
-                    <span className="text-sm font-medium uppercase tracking-[.16em] transition-colors group-hover:text-terracotta">Carregar mapa interativo</span>
+                    <span className="text-sm font-medium uppercase tracking-[.16em] transition-colors group-hover:text-rosedeep">Carregar mapa interativo</span>
                     <span className="text-[13px] text-ink/60">O Google Maps só carrega se você tocar aqui.</span>
                   </span>
                 </button>
