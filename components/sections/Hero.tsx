@@ -123,19 +123,19 @@ export default function Hero() {
       <div className="container-shell grid min-h-[100svh] items-end gap-10 pb-28 pt-[calc(var(--header-h)+24px)] lg:min-h-[max(100svh,760px)] lg:grid-cols-12 lg:items-center lg:pb-24">
         {/* Foto: fundo de tela cheia no celular; arco emoldurado no desktop */}
         <div className="lg:relative lg:col-span-5 lg:col-start-8 lg:row-start-1">
-          <div className="absolute inset-0 -z-10 lg:relative lg:inset-auto lg:z-0 lg:mx-auto lg:aspect-[4/5] lg:w-full lg:max-w-[500px]">
+          <div className="absolute inset-0 -z-10 lg:relative lg:inset-auto lg:z-0 lg:mx-auto lg:aspect-[2/3] lg:w-full lg:max-w-[440px]">
             <span aria-hidden="true" className="arch absolute -inset-3 hidden border border-gold/45 lg:block" />
             <span aria-hidden="true" className="arch absolute -inset-6 hidden border border-gold/15 lg:block" />
             <motion.div style={reduced ? undefined : { scale: imageScale }} className="absolute inset-0 overflow-hidden lg:arch">
               <Image
-                src="/assets/img/enyla-hero-recepcao.webp"
-                alt="Dra. Enyla Cerqueira na recepção da clínica, com pendentes de vidro e parede ripada ao fundo"
+                src="/assets/img/enyla-hero-ensaio.webp"
+                alt="Dra. Enyla Cerqueira de terno branco, sentada em sofá de veludo rosé diante do ripado de madeira do consultório"
                 fill
                 priority
                 fetchPriority="high"
                 quality={85}
                 sizes="(max-width: 1023px) 100vw, 500px"
-                className="kenburns object-cover object-[50%_0%]"
+                className="kenburns object-cover object-[60%_12%] lg:object-[50%_0%]"
               />
             </motion.div>
             {/* scrims só no celular: contraste do texto sobre a foto */}
