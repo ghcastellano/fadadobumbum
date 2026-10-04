@@ -21,7 +21,7 @@ for (const mobile of [false, true]) {
   check(`${tag} slider teclado`, Number(await slider.getAttribute('aria-valuenow')) > 50);
   // mapa do contorno
   await p.locator('#harmonizacao').scrollIntoViewIfNeeded();
-  await p.click('button[aria-label^="Ponto 03"]', { force: true });
+  await p.click('button[aria-label^="Região 03"]', { force: true });
   check(`${tag} mapa ponto 03`, await p.locator('text=Depressão lateral').first().isVisible());
   // quiz
   await p.locator('#avaliacao').scrollIntoViewIfNeeded();
