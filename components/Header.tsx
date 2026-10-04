@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -7,11 +9,14 @@ import { contact, messages, navLinks, whatsappUrl } from '@/lib/content';
 import WhatsIcon from './ui/WhatsIcon';
 import InstagramIcon from './ui/InstagramIcon';
 
+/** Logo oficial (monograma EC + "Dra. Enyla Cerqueira · Biomédica"). */
 export function Logo({ light = false, compact = false }: { light?: boolean; compact?: boolean }) {
+  const v = light ? '' : '-escuro';
   return (
-    <span className="flex flex-col leading-none">
-      <span className={`font-signature ${compact ? 'text-[1.75rem]' : 'text-[2rem] sm:text-[2.2rem]'} leading-[.9] transition-colors duration-500 ${light ? 'text-cream' : 'text-ink'}`}>Enyla Cerqueira</span>
-      <span className={`mt-1 pl-1 text-[10px] font-medium uppercase tracking-[.34em] transition-colors duration-500 ${light ? 'text-gold' : 'text-gold-deep'}`}>Fada do Bumbum</span>
+    <span className="flex items-center gap-2.5 sm:gap-3">
+      <Image src={`/assets/brand/monograma${v}.png`} alt="" width={640} height={621} priority sizes="48px" className={`${compact ? 'h-9' : 'h-10 sm:h-11'} w-auto`} />
+      <Image src={`/assets/brand/logotipo${v}.png`} alt="" width={1200} height={168} priority sizes="190px" className={`${compact ? 'w-[150px]' : 'w-[150px] sm:w-[188px]'} h-auto`} />
+      <span className="sr-only">Dra. Enyla Cerqueira, biomédica</span>
     </span>
   );
 }

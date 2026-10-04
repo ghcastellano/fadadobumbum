@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
-import { Logo } from './Header';
+import Image from 'next/image';
 import InstagramIcon from './ui/InstagramIcon';
 import WhatsIcon from './ui/WhatsIcon';
 import { compliance, contact, mapsUrl, messages, navLinks, whatsappUrl } from '@/lib/content';
@@ -27,7 +27,7 @@ export default function Footer() {
 
         <div className="grid gap-10 pt-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_.7fr_1fr_1fr]">
           <div>
-            <Logo light />
+            <Image src="/assets/brand/logo-completo.png" alt="Dra. Enyla Cerqueira, biomédica" width={1200} height={595} sizes="230px" className="h-auto w-[230px]" />
             <p className="mt-6 max-w-sm text-sm text-cream/75">Harmonização glútea com ácido hialurônico, planejamento por pontos estratégicos e naturalidade que respeita a sua anatomia.</p>
           </div>
           <nav aria-label="Rodapé">

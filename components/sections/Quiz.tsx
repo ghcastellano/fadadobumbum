@@ -73,7 +73,7 @@ export default function Quiz() {
         <Reveal delay={.1} className="lg:col-span-5 lg:sticky lg:top-[calc(var(--header-h)+40px)]">
           <div className="overflow-hidden rounded-[28px] bg-[#efe6dc] shadow-[0_30px_80px_rgba(42,27,21,.18)] ring-1 ring-ink/5">
             <div className="flex items-center gap-3 bg-[#2b1d17] px-5 py-4 text-cream">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-gold font-signature text-2xl text-espresso">E</span>
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-espresso ring-1 ring-gold/50"><img src="/assets/brand/monograma.png" alt="" className="h-6 w-auto" /></span>
               <span className="leading-tight">
                 <span className="block text-sm font-medium">Dra. Enyla Cerqueira</span>
                 <span className="block text-[12px] text-cream/65">Agendamentos · WhatsApp</span>

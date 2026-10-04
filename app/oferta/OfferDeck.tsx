@@ -131,7 +131,7 @@ export default function OfferDeck({ children, jump }: { children: ReactNode; jum
       <div className="of-progress" aria-hidden="true"><span style={{ transform: `scaleX(${(active + 1) / total})` }} /></div>
       <header className="of-top">
         <a href="/" className="of-brand" aria-label="Abrir o site Fada do Bumbum">
-          <span className="font-signature text-[1.7rem] leading-none">Enyla Cerqueira</span>
+          <span className="flex items-center gap-2"><img src={isDark ? "/assets/brand/monograma.png" : "/assets/brand/monograma-escuro.png"} alt="" className="h-8 w-auto" /><img src={isDark ? "/assets/brand/logotipo.png" : "/assets/brand/logotipo-escuro.png"} alt="Dra. Enyla Cerqueira" className="h-auto w-[150px]" /></span>
           <span className="of-brand-sub">Fada do Bumbum</span>
         </a>
         <span className="of-top-label">PROPOSTA · SITE OFICIAL</span>
