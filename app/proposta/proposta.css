@@ -55,7 +55,9 @@
 
 .of-scroll-cue { display: none; }
 
-@media (min-width: 900px) {
+/* modo apresentação em todas as telas (como as apresentações de referência):
+   um slide por vez, setas, deslize, contador e capítulos */
+@media all {
   html.of-js .of-deck { position: fixed; inset: 0; height: 100dvh; z-index: 100; }
   html.of-js .of-deck .of-viewport { position: relative; height: calc(100dvh - var(--of-top) - var(--of-bottom)); overflow: hidden; }
   html.of-js .of-deck .of-slide { position: absolute; inset: 0; height: 100%; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; opacity: 0; visibility: hidden; transform: translate3d(3%, 0, 0) scale(.99); transition: opacity .45s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1), visibility 0s .6s; padding: 40px 0; }
@@ -69,10 +71,26 @@
   .of-scroll-cue { display: block; position: fixed; left: 50%; bottom: calc(var(--of-bottom) + 14px); transform: translateX(-50%); z-index: 6; padding: 8px 16px; border-radius: 999px; font-size: 12px; letter-spacing: .08em; background: rgba(29,19,16,.78); color: var(--cream); backdrop-filter: blur(8px); pointer-events: none; }
   .of-scroll-cue[hidden] { display: none; }
 }
+/* sem JS: slides em sequência, legíveis como página */
+html:not(.of-js) .of-controls { display: none; }
+
 @media (max-width: 899px) {
-  .of-controls { display: none; }
-  .of-top-label { display: none; }
-  .of-slide { min-height: auto; padding: 64px 0; border-bottom: 1px solid rgba(42,27,21,.08); }
+  .of-deck { --of-top: 60px; --of-bottom: 68px; }
+  .of-top { gap: 12px; }
+  .of-top-label, .of-key-hint, .of-chapters label, .of-buttons .of-fullscreen { display: none; }
+  .of-brand img + img { width: 124px !important; }
+  .of-brand-sub { display: none; }
+  .of-top-invite { font-size: 11px; letter-spacing: .12em; }
+  .of-controls { gap: 12px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); height: calc(var(--of-bottom) + env(safe-area-inset-bottom)); }
+  html.of-js .of-deck .of-viewport { height: calc(100dvh - var(--of-top) - var(--of-bottom) - env(safe-area-inset-bottom)); }
+  .of-controls .of-chapters { min-width: 0; flex: 1; }
+  .of-controls .of-chapters select { width: 100%; max-width: 100%; min-height: 44px; font-size: 13px; text-overflow: ellipsis; }
+  .of-buttons { gap: 8px; }
+  .of-buttons button { height: 44px; width: 44px; }
+  .of-count { min-width: 52px; font-size: 13px; }
+  html.of-js .of-deck .of-slide { padding: 28px 0 40px; }
+  .of-wrap { gap: 22px; }
+  .of-scroll-cue { bottom: calc(var(--of-bottom) + env(safe-area-inset-bottom) + 10px); font-size: 11px; }
 }
 
 .of-chapters { display: flex; align-items: center; gap: 12px; }
@@ -90,7 +108,7 @@
 .of-count i { font-style: normal; color: var(--of-muted); }
 
 /* revelação escalonada ao entrar no slide */
-@media (min-width: 900px) {
+@media all {
   html.of-js .of-deck .of-reveal { opacity: 0; transform: translateY(16px); }
   html.of-js .of-deck:not(.of-ready) .of-slide:first-child .of-reveal,
   html.of-js .of-deck .of-active .of-reveal { animation: of-reveal .7s cubic-bezier(.22,1,.36,1) both; animation-delay: calc(var(--d, 0) * 80ms + 120ms); }
@@ -100,7 +118,6 @@
 @keyframes of-reveal { to { opacity: 1; transform: none; } }
 @keyframes of-drift { to { transform: translate(-40px, 55px); } }
 .of-bar-fill { transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(.22,1,.36,1) .45s; }
-@media (max-width: 899px) { .of-bar-fill { transform: scaleX(1); } }
 
 @media (prefers-reduced-motion: reduce) {
   .of-deck *, .of-deck *::before, .of-deck *::after { animation: none !important; transition: none !important; }
@@ -115,3 +132,4 @@
   html.of-js .of-deck .of-reveal { opacity: 1; transform: none; animation: none; }
   .of-controls, .of-progress, .of-scroll-cue, .of-top { display: none !important; }
 }
+@media (max-width: 380px) { .of-brand img + img { display: none; } }
