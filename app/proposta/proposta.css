@@ -109,21 +109,22 @@ html:not(.of-js) .of-controls { display: none; }
 
 /* revelação escalonada ao entrar no slide */
 @media all {
-  html.of-js .of-deck .of-reveal { opacity: 0; transform: translateY(16px); }
+  /* o conteúdo é sempre visível por padrão; a animação só parte do invisível
+     enquanto roda (fill backwards). Se o navegador não animar (ex.: Safari
+     do iPhone em algumas situações), nada fica escondido. */
   html.of-js .of-deck:not(.of-ready) .of-slide:first-child .of-reveal,
-  html.of-js .of-deck .of-active .of-reveal { animation: of-reveal .7s cubic-bezier(.22,1,.36,1) both; animation-delay: calc(var(--d, 0) * 80ms + 120ms); }
+  html.of-js .of-deck .of-active .of-reveal { animation: of-reveal .7s cubic-bezier(.22,1,.36,1) backwards; animation-delay: calc(var(--d, 0) * 80ms + 120ms); }
   .of-active .of-orbs i { animation: of-drift 16s ease-in-out infinite alternate; }
-  .of-active .of-bar-fill { transform: scaleX(1); }
+  .of-active .of-bar-fill { animation: of-bar 1s cubic-bezier(.22,1,.36,1) .45s backwards; }
 }
-@keyframes of-reveal { to { opacity: 1; transform: none; } }
+@keyframes of-reveal { from { opacity: 0; transform: translateY(16px); } }
+@keyframes of-bar { from { transform: scaleX(0); } }
 @keyframes of-drift { to { transform: translate(-40px, 55px); } }
-.of-bar-fill { transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(.22,1,.36,1) .45s; }
+.of-bar-fill { transform-origin: left; }
 
 @media (prefers-reduced-motion: reduce) {
   .of-deck *, .of-deck *::before, .of-deck *::after { animation: none !important; transition: none !important; }
-  html.of-js .of-deck .of-reveal { opacity: 1; transform: none; }
   html.of-js .of-deck .of-slide { transform: none; }
-  .of-bar-fill { transform: scaleX(1); }
 }
 @media print {
   html.of-js .of-deck { position: static; height: auto; }
