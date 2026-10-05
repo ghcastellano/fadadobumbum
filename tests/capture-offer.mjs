@@ -50,8 +50,8 @@ await sharp(await o.screenshot()).jpeg({ quality: 84 }).toFile(new URL('../publi
 // celular
 const m = await page({ width: 390, height: 844 }, true);
 await toWebp(await m.screenshot(), 'mobile-hero.webp', 390 * 2);
-await scrollTo(m, '#harmonizacao [aria-label^="Desenho"]', -150);
-await toWebp(await m.screenshot(), 'mobile-mapa.webp', 390 * 2);
+await scrollTo(m, '#madrid', 120);
+await toWebp(await m.screenshot(), 'mobile-madrid.webp', 390 * 2);
 await scrollTo(m, '#avaliacao', 120);
 await m.click('button:has-text("Mais projeção")');
 await m.click('button:has-text("Um volume sutil")');

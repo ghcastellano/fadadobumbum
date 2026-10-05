@@ -192,7 +192,7 @@ export default function Oferta() {
             Efeitos que surpreendem <em>— e explicam.</em>
           </Heading>
           <div className="grid gap-6 lg:grid-cols-3">
-            <Shot src="/assets/oferta/tour-mapa.webp" alt="Mapa do contorno interativo" label="Mapa do contorno · os 4 pontos estratégicos" n={3} />
+            <Shot src="/assets/oferta/tour-mapa.webp" alt="Mapa do contorno com as 4 regiões" label="Mapa do contorno · 4 regiões explicadas" n={3} />
             <Shot src="/assets/oferta/tour-resultado.webp" alt="Antes e depois com slider" label="Antes e depois com véu de privacidade" n={4} />
             <Shot src="/assets/oferta/tour-stories.webp" alt="Stories com vídeos da Dra." label="“A Dra. responde” · stories com som" n={5} />
           </div>
@@ -229,7 +229,7 @@ export default function Oferta() {
               Leve como um app. <em>Bonito em qualquer tela.</em>
             </Heading>
             <div className="of-reveal grid grid-cols-3 items-end gap-4" style={d(3)}>
-              <div className="of-phone translate-y-6"><Image src="/assets/oferta/mobile-mapa.webp" alt="Mapa do contorno no celular" width={390} height={844} sizes="180px" /></div>
+              <div className="of-phone translate-y-6"><Image src="/assets/oferta/mobile-madrid.webp" alt="Seção Madrid no celular, com o cartão de embarque" width={390} height={844} sizes="180px" /></div>
               <div className="of-phone"><Image src="/assets/oferta/mobile-hero.webp" alt="Início do site no celular" width={390} height={844} sizes="180px" /></div>
               <div className="of-phone translate-y-6"><Image src="/assets/oferta/mobile-quiz.webp" alt="Mapa do objetivo no celular" width={390} height={844} sizes="180px" /></div>
             </div>
