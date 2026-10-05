@@ -1,12 +1,12 @@
 'use client';
 
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-function Word({ word, progress, range, floor, accent }: { word: string; progress: MotionValue<number>; range: [number, number]; floor: number; accent: boolean }) {
+function Word({ word, progress, range, floor, accent, still }: { word: string; progress: MotionValue<number>; range: [number, number]; floor: number; accent: boolean; still: boolean }) {
   const opacity = useTransform(progress, range, [floor, 1]);
   return (
-    <motion.span style={{ opacity }} className={accent ? 'italic text-gold-deep' : ''}>
+    <motion.span style={{ opacity: still ? 1 : opacity }} className={accent ? 'italic text-gold-deep' : ''}>
       {word}{' '}
     </motion.span>
   );
@@ -19,12 +19,15 @@ function Word({ word, progress, range, floor, accent }: { word: string; progress
 export default function WordReveal({ text, className = '', as: Tag = 'p', dark = false }: { text: string; className?: string; as?: 'p' | 'h2' | 'h3'; dark?: boolean }) {
   const root = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
+  // mesma marcação no servidor e na 1ª renderização do cliente (sem erro de
+  // hidratação); com movimento reduzido o texto só acende por inteiro depois.
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
+  const still = Boolean(reduced) && hydrated;
   const { scrollYProgress } = useScroll({ target: root, offset: ['start 0.9', 'start 0.3'] });
   const words = text.split(' ');
   const plain = text.replace(/\*/g, '');
   const floor = dark ? .28 : .22;
-
-  if (reduced) return <Tag ref={root as never} className={className}>{plain}</Tag>;
 
   return (
     <Tag ref={root as never} className={className}>
@@ -41,6 +44,7 @@ export default function WordReveal({ text, className = '', as: Tag = 'p', dark =
               progress={scrollYProgress}
               range={[index / words.length, Math.min(1, (index + 1) / words.length + .06)]}
               floor={floor}
+              still={still}
             />
           );
         })}
