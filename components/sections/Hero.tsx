@@ -101,13 +101,13 @@ export default function Hero() {
         </defs>
       </svg>
 
-      <div className="container-shell grid min-h-[100svh] items-end gap-10 pb-28 pt-[calc(var(--header-h)+24px)] lg:min-h-[max(100svh,760px)] lg:grid-cols-12 lg:items-center lg:pb-24">
-        {/* Foto: fundo de tela cheia no celular; arco emoldurado no desktop */}
+      <div className="container-shell grid min-h-[100svh] content-start gap-7 pb-24 pt-[calc(var(--header-h)+18px)] lg:min-h-[max(100svh,760px)] lg:grid-cols-12 lg:content-normal lg:items-center lg:gap-10 lg:pb-24 lg:pt-[calc(var(--header-h)+24px)]">
+        {/* Foto em arco: no topo no celular (rosto livre, sem texto por cima); à direita no desktop */}
         <div className="lg:relative lg:col-span-5 lg:col-start-8 lg:row-start-1">
-          <div className="absolute inset-0 -z-10 lg:relative lg:inset-auto lg:z-0 lg:mx-auto lg:aspect-[2/3] lg:w-full lg:max-w-[460px]">
-            <span aria-hidden="true" className="arch absolute -inset-3 hidden border border-gold/45 lg:block" />
+          <div className="relative mx-2 h-[min(31svh,430px)] [@media(min-height:740px)]:h-[min(38svh,430px)] sm:mx-auto sm:w-full sm:max-w-[440px] lg:h-auto lg:aspect-[2/3] lg:max-w-[460px]">
+            <span aria-hidden="true" className="arch absolute -inset-2 border border-gold/45 lg:-inset-3" />
             <span aria-hidden="true" className="arch absolute -inset-6 hidden border border-gold/15 lg:block" />
-            <motion.div style={fx ? { scale: imageScale } : undefined} className="absolute inset-0 overflow-hidden lg:arch">
+            <motion.div style={fx ? { scale: imageScale } : undefined} className="arch absolute inset-0 overflow-hidden">
               <Image
                 src="/assets/img/enyla-hero.webp"
                 alt="Dra. Enyla Cerqueira sorrindo, de blusa nude drapeada, sentada em poltrona rosé diante do ripado de madeira"
@@ -116,12 +116,9 @@ export default function Hero() {
                 fetchPriority="high"
                 quality={85}
                 sizes="(max-width: 1023px) 100vw, 500px"
-                className="kenburns object-cover object-[62%_18%] lg:object-[50%_30%]"
+                className="kenburns object-cover object-[60%_22%] lg:object-[50%_30%]"
               />
             </motion.div>
-            {/* scrims só no celular: contraste do texto sobre a foto */}
-            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/75 to-espresso/10 lg:hidden" />
-            <div aria-hidden="true" className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-espresso/70 to-transparent lg:hidden" />
 
             <motion.div
               initial={reduced ? false : { opacity: 0, scale: .6, rotate: -30 }}
@@ -136,27 +133,28 @@ export default function Hero() {
 
         <motion.div style={fx ? { y: copyY, opacity: copyOpacity } : undefined} className="relative z-10 max-w-[760px] lg:col-span-7 lg:row-start-1">
           <p className="hero-fade eyebrow text-gold" style={{ ['--d' as string]: '.05s' }}>
-            <span className="sm:hidden">Biomédica esteta · São Paulo</span>
-            <span className="hidden sm:inline">Biomédica esteta · Harmonização glútea · SP</span>
+            <span className="lg:hidden">Dra. Enyla Cerqueira · Biomédica</span>
+            <span className="hidden lg:inline">Biomédica esteta · Harmonização glútea · SP</span>
           </p>
 
-          <h1 aria-label="Fada do Bumbum" className="display mt-5 text-[clamp(4.6rem,14vw,11rem)] leading-[.84] sm:mt-7">
+          <h1 aria-label="Fada do Bumbum" className="display mt-3 text-[clamp(3.1rem,14vw,5.2rem)] leading-[.86] sm:text-[clamp(4.6rem,11vw,7rem)] lg:mt-7 lg:text-[clamp(4.6rem,14vw,11rem)] lg:leading-[.84]">
             <Letters text="Fada do" delay={.1} />
             <Line text="Bumbum" delay={.35} className="shimmer pr-[.06em] italic" />
           </h1>
 
-          <div className="hero-fade mt-6 sm:mt-8" style={{ ['--d' as string]: '.6s' }}>
-            <Image src="/assets/brand/logotipo.png" alt="Dra. Enyla Cerqueira, biomédica" width={1200} height={168} sizes="320px" className="h-auto w-[250px] sm:w-[320px]" />
-            <p className="mt-4 flex items-center gap-2.5 text-[12px] font-medium uppercase tracking-[.2em] text-gold">
+          <div className="hero-fade mt-4 lg:mt-8" style={{ ['--d' as string]: '.6s' }}>
+            <Image src="/assets/brand/logotipo.png" alt="Dra. Enyla Cerqueira, biomédica" width={1200} height={168} sizes="320px" className="hidden h-auto w-[320px] lg:block" />
+            <p className="flex items-center gap-2.5 text-[12px] lg:mt-4 font-medium uppercase tracking-[.2em] text-gold">
               <Plane aria-hidden="true" className="h-3.5 w-3.5" /> Pós-graduação internacional · Madrid
             </p>
           </div>
 
           <div className="hero-fade" style={{ ['--d' as string]: '.75s' }}>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/85 sm:mt-8">
-              Harmonização glútea com ácido hialurônico, planejada ponto a ponto para valorizar o formato que já é seu — com naturalidade e sem PMMA.
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-cream/85 lg:mt-8 lg:text-lg">
+              <span className="lg:hidden">Harmonização glútea com ácido hialurônico: natural, planejada ponto a ponto e sem PMMA.</span>
+              <span className="hidden lg:inline">Harmonização glútea com ácido hialurônico, planejada ponto a ponto para valorizar o formato que já é seu — com naturalidade e sem PMMA.</span>
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 lg:mt-8">
               <a
                 href={whatsappUrl(messages.hero)}
                 target="_blank"
