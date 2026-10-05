@@ -46,7 +46,7 @@ function BoardingPass() {
       whileInView={{ opacity: 1, y: 0, rotate: -5 }}
       viewport={{ once: true, amount: .5 }}
       transition={{ duration: 1, delay: .3, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute -bottom-24 -right-1 w-[min(76%,270px)] sm:-right-10 lg:-bottom-28 lg:-right-16"
+      className="relative z-10 mx-auto mt-10 w-[min(82%,280px)] sm:ml-auto sm:mr-0"
     >
       <div className="relative overflow-hidden rounded-2xl bg-ivory text-ink shadow-[0_30px_70px_rgba(42,27,21,.28)] ring-1 ring-ink/10">
         <div className="flex items-center justify-between bg-rosedeep px-4 py-2.5 text-[10px] font-medium uppercase tracking-[.26em] text-ivory">
@@ -125,29 +125,29 @@ export default function Madrid() {
   const x = useTransform(scrollYProgress, [0, 1], ['6%', '-28%']);
 
   return (
-    <section id="madrid" ref={root} aria-labelledby="madrid-titulo" className="relative overflow-hidden bg-cream py-24 sm:py-28 lg:py-36">
+    <section id="madrid" ref={root} aria-labelledby="madrid-titulo" className="relative overflow-hidden bg-cream pb-24 pt-10 sm:pb-28 sm:pt-12 lg:pb-36 lg:pt-14">
       <motion.p
         aria-hidden="true"
         style={fx ? { x } : undefined}
-        className="text-outline pointer-events-none absolute left-0 top-10 whitespace-nowrap font-display text-[clamp(8rem,24vw,22rem)] italic leading-none text-rosedeep/25"
+        className="text-outline pointer-events-none mb-10 whitespace-nowrap font-display text-[clamp(5rem,16vw,15rem)] italic leading-[1.1] text-rosedeep/25 sm:mb-14"
       >
         Madrid · España · Madrid
       </motion.p>
 
       <div className="container-shell relative grid gap-14 lg:grid-cols-12 lg:items-center">
-        <div className="relative pb-24 lg:col-span-5 lg:pb-0">
+        <div className="relative lg:col-span-5">
           <Reveal>
             <div className="relative mx-auto max-w-[460px]">
               <span aria-hidden="true" className="arch absolute -inset-3 border border-gold/50" />
               <div className="arch relative aspect-[4/5] overflow-hidden bg-cacao">
                 <LoopVideo />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-espresso/75 to-transparent p-6 pb-16 pt-24 text-cream sm:pb-20">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-espresso/75 to-transparent p-6 pt-24 text-cream">
                   <p className="text-[11px] font-medium uppercase tracking-[.22em] text-gold">Madrid · setembro de 2026</p>
                   <p className="mt-1 font-display text-2xl italic">Um novo nível começa aqui.</p>
                 </div>
               </div>
-              <BoardingPass />
             </div>
+            <div className="mx-auto max-w-[460px]"><BoardingPass /></div>
           </Reveal>
         </div>
 

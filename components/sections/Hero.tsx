@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import { useDesktopFx } from '@/lib/fx';
-import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { ArrowDown, ArrowUpRight, Check } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { ArrowUpRight, Plane } from 'lucide-react';
+import { useRef, useState } from 'react';
 import Marquee from '../fx/Marquee';
 import WhatsIcon from '../ui/WhatsIcon';
 import { marqueeWords, messages, whatsappUrl } from '@/lib/content';
@@ -65,26 +65,6 @@ export default function Hero() {
   const copyOpacity = useTransform(scrollYProgress, [0, .75], [1, 0]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
 
-  // parallax de mouse nos cartões flutuantes
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 60, damping: 18 });
-  const sy = useSpring(my, { stiffness: 60, damping: 18 });
-  const cardAX = useTransform(sx, (v) => v * -18);
-  const cardAY = useTransform(sy, (v) => v * -14);
-  const cardBX = useTransform(sx, (v) => v * 22);
-  const cardBY = useTransform(sy, (v) => v * 16);
-
-  useEffect(() => {
-    if (!fx) return;
-    const onMove = (event: PointerEvent) => {
-      mx.set(event.clientX / window.innerWidth - .5);
-      my.set(event.clientY / window.innerHeight - .5);
-    };
-    window.addEventListener('pointermove', onMove, { passive: true });
-    return () => window.removeEventListener('pointermove', onMove);
-  }, [mx, my, fx]);
-
   return (
     <section id="inicio" ref={root} className="slats noise relative isolate min-h-[100svh] overflow-hidden text-cream lg:min-h-[max(100svh,760px)]">
       {/* vinheta e profundidade sobre o ripado */}
@@ -143,31 +123,6 @@ export default function Hero() {
             <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/75 to-espresso/10 lg:hidden" />
             <div aria-hidden="true" className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-espresso/70 to-transparent lg:hidden" />
 
-            <motion.div style={fx ? { x: cardAX, y: cardAY } : undefined} className="absolute -left-14 top-[16%] hidden lg:block xl:-left-20">
-              <motion.div
-                initial={reduced ? false : { opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: base + 1.1, duration: .8, ease: [0.22, 1, 0.36, 1] }}
-                className="rounded-2xl border border-cream/15 bg-espresso/55 px-5 py-4 shadow-[0_20px_50px_rgba(0,0,0,.35)] backdrop-blur-md"
-              >
-                <p className="text-[11px] font-medium uppercase tracking-[.22em] text-gold">Pós-graduação internacional</p>
-                <p className="mt-1 font-display text-2xl italic leading-none">Madrid, Espanha</p>
-              </motion.div>
-            </motion.div>
-
-            <motion.div style={fx ? { x: cardBX, y: cardBY } : undefined} className="absolute -right-8 bottom-[14%] hidden lg:block xl:-right-12">
-              <motion.div
-                initial={reduced ? false : { opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: base + 1.3, duration: .8, ease: [0.22, 1, 0.36, 1] }}
-                className="grid gap-1.5 rounded-2xl border border-cream/15 bg-cream/10 px-5 py-4 text-sm shadow-[0_20px_50px_rgba(0,0,0,.35)] backdrop-blur-md"
-              >
-                <span className="flex items-center gap-2"><Check className="h-4 w-4 text-gold" /> Ácido hialurônico</span>
-                <span className="flex items-center gap-2"><Check className="h-4 w-4 text-gold" /> Não é PMMA</span>
-                <span className="flex items-center gap-2"><Check className="h-4 w-4 text-gold" /> Anestesia local</span>
-              </motion.div>
-            </motion.div>
-
             <motion.div
               initial={reduced ? false : { opacity: 0, scale: .6, rotate: -30 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -192,6 +147,9 @@ export default function Hero() {
 
           <div className="hero-fade mt-6 sm:mt-8" style={{ ['--d' as string]: '.6s' }}>
             <Image src="/assets/brand/logotipo.png" alt="Dra. Enyla Cerqueira, biomédica" width={1200} height={168} sizes="320px" className="h-auto w-[250px] sm:w-[320px]" />
+            <p className="mt-4 flex items-center gap-2.5 text-[12px] font-medium uppercase tracking-[.2em] text-gold">
+              <Plane aria-hidden="true" className="h-3.5 w-3.5" /> Pós-graduação internacional · Madrid
+            </p>
           </div>
 
           <div className="hero-fade" style={{ ['--d' as string]: '.75s' }}>
@@ -216,15 +174,6 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
-
-      <a href="#filosofia" aria-label="Rolar para conhecer a filosofia" className="absolute bottom-20 right-6 z-10 hidden items-center gap-3 lg:flex xl:right-10">
-        <span className="text-[11px] uppercase tracking-[.22em] text-cream/70">Role</span>
-        <span className="relative grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-cream/25">
-          <motion.span aria-hidden="true" animate={reduced ? undefined : { y: ['-130%', '130%'] }} transition={{ duration: 1.9, repeat: Infinity, ease: 'easeInOut' }} className="absolute inset-x-0 top-1/2 grid place-items-center">
-            <ArrowDown className="h-4 w-4 -translate-y-1/2" />
-          </motion.span>
-        </span>
-      </a>
 
       <div className="absolute inset-x-0 bottom-0 z-10 border-t border-cream/10 bg-espresso/40 backdrop-blur-[2px]">
         <Marquee items={marqueeWords} duration={40} className="py-4 text-[12px] font-medium uppercase tracking-[.26em] text-cream/80" />
