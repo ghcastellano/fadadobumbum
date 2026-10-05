@@ -24,6 +24,15 @@ export const pricing = {
   domainYear: 40,
 };
 
+// Consulta de disponibilidade do nome (Registro.br e Verisign/RDAP).
+export const nameCheck = {
+  date: '05/10/2026',
+  domains: [
+    { name: 'fadadobumbum', tld: '.com.br', note: 'endereço principal' },
+    { name: 'fadadobumbum', tld: '.com', note: 'proteção da marca (opcional)' },
+  ],
+};
+
 export const pixPrice = Math.round(pricing.setup * (1 - pricing.pixDiscount));
 export const installmentValue = Math.round(pricing.setup / pricing.installments);
 

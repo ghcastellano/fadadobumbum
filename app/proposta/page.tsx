@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 import Image from 'next/image';
 import OfferDeck from './OfferDeck';
-import { brl, installmentValue, market, pixPrice, plans, pricing, seller, sellerWhatsapp } from '@/lib/offer';
+import { brl, installmentValue, market, nameCheck, pixPrice, plans, pricing, seller, sellerWhatsapp } from '@/lib/offer';
 import './proposta.css';
 
 export const metadata: Metadata = {
@@ -45,6 +45,13 @@ function Shot({ src, alt, label, className = '', n = 0 }: { src: string; alt: st
   );
 }
 
+const live = (
+  <span aria-hidden="true" className="relative flex h-2.5 w-2.5 shrink-0">
+    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#4ade80] opacity-60 motion-reduce:hidden" />
+    <span className="relative h-2.5 w-2.5 rounded-full bg-[#4ade80]" />
+  </span>
+);
+
 const check = <span aria-hidden="true" className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-rosedeep text-[11px] text-ivory">✓</span>;
 
 export default function Oferta() {
@@ -65,11 +72,14 @@ export default function Oferta() {
               <p className="of-lead of-reveal" style={d(2)}>
                 Um site autoral, <strong className="font-medium text-cream">já construído e no ar</strong>, feito a partir do seu Instagram, da sua formação em Madrid e da clínica da Haddock Lobo. Esta apresentação mostra o que ele faz, por que ele vende e quanto custa mantê-lo evoluindo.
               </p>
-              <div className="of-reveal flex flex-wrap items-center gap-4" style={d(3)}>
+              <p className="of-reveal inline-flex w-fit flex-wrap items-center gap-x-3 gap-y-1 rounded-full border border-gold/40 bg-cream/5 px-5 py-2.5 text-[14px]" style={d(3)}>
+                {live}<span><b className="font-medium text-cream">fadadobumbum.com.br</b> <span className="text-cream/75">está disponível hoje</span></span>
+              </p>
+              <div className="of-reveal flex flex-wrap items-center gap-4" style={d(4)}>
                 <a href="/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-3 rounded-full bg-gold px-7 text-[13px] font-medium uppercase tracking-[.14em] text-espresso">Abrir o site ↗</a>
                 <span className="text-[13px] text-cream/65">13 capítulos · cerca de 6 minutos</span>
               </div>
-              <div className="of-reveal mt-4 flex items-center gap-3" style={d(4)}>
+              <div className="of-reveal mt-4 flex items-center gap-3" style={d(5)}>
                 <span className="grid h-11 w-11 place-items-center rounded-full bg-cream/10 font-display text-lg text-gold ring-1 ring-gold/40">{seller.initials}</span>
                 <span className="leading-tight"><b className="block font-medium">{seller.name}</b><small className="text-cream/65">{seller.role}</small></span>
               </div>
@@ -119,16 +129,34 @@ export default function Oferta() {
         <div className="of-orbs" aria-hidden="true"><i /><i /></div>
         <div className="of-wrap">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
-            <Heading eyebrow="02 / Uma marca que precisa de endereço" lead="“Fada do Bumbum” é uma marca forte — e nomes fortes são disputados. Hoje o domínio ainda está livre no Registro.br.">
-              Antes que alguém registre, <em>o nome deveria ser seu.</em>
-            </Heading>
-            <div className="of-reveal grid gap-4" style={d(3)}>
-              <div className="rounded-[22px] border border-gold/40 bg-cream/5 p-7">
-                <p className="text-[11px] uppercase tracking-[.22em] text-gold">Consulta no Registro.br · 03/10/2026</p>
-                <p className="mt-4 break-all font-display text-[clamp(2rem,3.6vw,3.2rem)] leading-none">fadadobumbum<span className="text-gold">.com.br</span></p>
-                <p className="mt-4 flex items-center gap-2 text-sm text-cream/85"><span className="h-2.5 w-2.5 rounded-full bg-[#4ade80]" /> Disponível para registro · {brl(pricing.domainYear)} por ano</p>
+            <div className="grid gap-6">
+              <Heading eyebrow="02 / O nome Fada do Bumbum" lead="É um nome que se guarda de primeira, fácil de buscar e de indicar — o tipo de nome que vira referência. Na consulta de hoje, ele continua livre. Mas no Registro.br não existe reserva: o domínio fica com quem registrar primeiro.">
+                Fada do Bumbum é a sua marca. <em>Hoje, o nome ainda está disponível.</em>
+              </Heading>
+              <div className="of-reveal grid gap-3" style={d(4)}>
+                <p className="text-[11px] uppercase tracking-[.22em] text-gold">Se outra pessoa registrar antes</p>
+                <ul className="grid gap-2.5 text-[15px] leading-snug text-cream/85">
+                  <li className="flex gap-3"><span className="text-gold">✕</span>quem digitar “Fada do Bumbum” cai no site de outra pessoa;</li>
+                  <li className="flex gap-3"><span className="text-gold">✕</span>recuperar um domínio ocupado custa muito mais — quando o dono aceita vender;</li>
+                  <li className="flex gap-3"><span className="text-gold">✕</span>todo o conteúdo que você cria passa a fortalecer um endereço que não é seu.</li>
+                </ul>
               </div>
-              <p className="of-note">O registro é feito no CPF ou CNPJ da Dra. Enyla: o endereço é dela para sempre, independentemente de quem cuida do site.</p>
+            </div>
+            <div className="of-reveal grid gap-4" style={d(3)}>
+              <div className="grid gap-5 rounded-[22px] border border-gold/40 bg-cream/5 p-7">
+                <p className="text-[11px] uppercase tracking-[.22em] text-gold">Consulta no Registro.br e na Verisign · {nameCheck.date}</p>
+                {nameCheck.domains.map((domain, i) => (
+                  <div key={domain.tld} className={i ? 'border-t border-cream/10 pt-5' : ''}>
+                    <p className={`break-all font-display leading-none ${i ? 'text-[clamp(1.5rem,2.4vw,2.1rem)] text-cream/85' : 'text-[clamp(2rem,3.6vw,3.2rem)]'}`}>{domain.name}<span className="text-gold">{domain.tld}</span></p>
+                    <p className="mt-3 flex items-center gap-2.5 text-sm text-cream/85">{live} Disponível · {domain.note}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-[22px] bg-gold px-7 py-5 text-espresso">
+                <p className="font-display text-[clamp(1.6rem,2.6vw,2.2rem)] leading-tight">{brl(pricing.domainYear)} por ano.</p>
+                <p className="mt-1 text-[15px]">Menos de R$ 4 por mês para o nome ser seu — em qualquer cenário.</p>
+              </div>
+              <p className="of-note">O registro é feito no CPF ou CNPJ da Dra. Enyla: o endereço é dela, independentemente de quem cuida do site. Para proteger o nome também fora da internet, o passo seguinte é o registro da marca no INPI.</p>
             </div>
           </div>
         </div>
@@ -339,11 +367,17 @@ export default function Oferta() {
           <p className="of-eyebrow of-reveal" style={d(0)}>12 / O convite</p>
           <h2 className="of-reveal max-w-5xl text-[clamp(3rem,6.6vw,6.6rem)] leading-[.98]" style={d(1)}>Vamos colocar a Fada <em className="shimmer">no mapa?</em></h2>
           <p className="of-lead of-reveal" style={d(2)}>O site está pronto para receber as suas pacientes. Falta só ele ganhar o seu nome, os seus textos finais e o endereço que é seu.</p>
-          <div className="of-reveal flex flex-wrap items-center gap-4" style={d(3)}>
-            <a href={sellerWhatsapp('Gustavo, vi a proposta do site da Fada do Bumbum e quero conversar.')} target="_blank" rel="noopener noreferrer" data-sparkle className="inline-flex min-h-14 items-center gap-3 rounded-full bg-gold px-8 text-[13px] font-medium uppercase tracking-[.16em] text-espresso">Vamos conversar ↗</a>
-            <a href="/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center border-b border-gold/60 text-[13px] font-medium uppercase tracking-[.16em]">Rever o site</a>
+          <div className="of-reveal grid max-w-3xl gap-2 rounded-[22px] border border-gold/40 bg-cream/5 p-6 sm:p-7" style={d(3)}>
+            <p className="flex items-center gap-2.5 text-[11px] uppercase tracking-[.22em] text-gold">{live} Primeiro passo · ainda esta semana</p>
+            <p className="font-display text-[clamp(1.6rem,2.8vw,2.4rem)] leading-tight">Garantir <span className="text-gold">fadadobumbum.com.br</span> no seu nome.</p>
+            <p className="text-[15px] text-cream/80">Leva cerca de 10 minutos, custa {brl(pricing.domainYear)} por ano e já protege a marca — mesmo antes de decidirmos o resto.</p>
           </div>
-          <p className="of-note of-reveal" style={d(4)}>{seller.name} · {seller.role}. Valores válidos por 15 dias a partir de 03/10/2026.</p>
+          <div className="of-reveal flex flex-wrap items-center gap-4" style={d(4)}>
+            <a href={sellerWhatsapp('Gustavo, quero garantir o domínio fadadobumbum.com.br no meu nome.')} target="_blank" rel="noopener noreferrer" data-sparkle className="inline-flex min-h-14 items-center gap-3 rounded-full bg-gold px-8 text-[13px] font-medium uppercase tracking-[.16em] text-espresso">Garantir o nome ↗</a>
+            <a href={sellerWhatsapp('Gustavo, vi a proposta do site da Fada do Bumbum e quero conversar.')} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center border-b border-gold/60 text-[13px] font-medium uppercase tracking-[.16em]">Conversar sobre o site</a>
+            <a href="/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center border-b border-cream/30 text-[13px] font-medium uppercase tracking-[.16em] text-cream/75">Rever o site</a>
+          </div>
+          <p className="of-note of-reveal" style={d(5)}>{seller.name} · {seller.role}. Valores válidos por 15 dias a partir de 03/10/2026.</p>
         </div>
       </section>
     </OfferDeck>
