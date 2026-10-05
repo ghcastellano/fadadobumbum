@@ -1,4 +1,4 @@
-/* Apresentação /oferta — mecânica do deck (conteúdo usa Tailwind).
+/* Apresentação /proposta — mecânica do deck (conteúdo usa Tailwind).
    Regras de tipografia usam :where() para ficar com especificidade de
    elemento: vencem o preflight e perdem para os utilitários do Tailwind. */
 .of-deck { --of-top: 72px; --of-bottom: 84px; --of-text: var(--ink); --of-muted: rgba(42,27,21,.72); --of-edge: rgba(42,27,21,.18); color: var(--of-text); background: var(--cream); width: 100%; isolation: isolate; }

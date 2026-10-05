@@ -1,4 +1,4 @@
-// Proposta comercial do site (rota /oferta). Valores e textos num só lugar
+// Proposta comercial do site (rota /proposta). Valores e textos num só lugar
 // para ajustar a negociação sem mexer no layout dos slides.
 
 export const seller = {

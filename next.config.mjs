@@ -9,6 +9,10 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
+  async redirects() {
+    // link antigo da apresentação continua funcionando
+    return [{ source: '/oferta', destination: '/proposta', permanent: false }];
+  },
   async headers() {
     const cache = [{ key: 'Cache-Control', value: 'public, max-age=2592000, stale-while-revalidate=86400' }];
     const security = [

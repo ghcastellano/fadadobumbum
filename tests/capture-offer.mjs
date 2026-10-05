@@ -1,4 +1,4 @@
-// Gera as capturas do site usadas na apresentação /oferta e a imagem OG.
+// Gera as capturas do site usadas na apresentação /proposta e a imagem OG.
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 

@@ -3,17 +3,17 @@ import type { Metadata, Viewport } from 'next';
 import Image from 'next/image';
 import OfferDeck from './OfferDeck';
 import { brl, installmentValue, market, pixPrice, plans, pricing, seller, sellerWhatsapp } from '@/lib/offer';
-import './oferta.css';
+import './proposta.css';
 
 export const metadata: Metadata = {
   title: 'Proposta — site oficial da Fada do Bumbum',
   description: 'Proposta do site oficial da Dra. Enyla Cerqueira: o que foi construído, como funciona, investimento e planos de suporte e evolução.',
   robots: { index: false, follow: false },
-  alternates: { canonical: '/oferta' },
+  alternates: { canonical: '/proposta' },
   openGraph: {
     title: 'Dra. Enyla, a Fada do Bumbum merece um endereço à altura',
     description: 'Site autoral já no ar, feito a partir do seu Instagram, da sua formação em Madrid e da clínica da Haddock Lobo.',
-    url: '/oferta',
+    url: '/proposta',
     locale: 'pt_BR',
     type: 'website',
     images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'Fada do Bumbum' }],

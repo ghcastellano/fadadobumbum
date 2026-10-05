@@ -14,7 +14,7 @@ const devices = [
 const browser = await chromium.launch({ executablePath: process.env.CHROME ?? '/opt/pw-browsers/chromium' });
 let fail = 0;
 for (const d of devices) {
-  for (const path of ['/', '/oferta']) {
+  for (const path of ['/', '/proposta']) {
     const ctx = await browser.newContext({ viewport: d.viewport, isMobile: d.mobile, hasTouch: d.mobile });
     await ctx.addInitScript(() => { try { sessionStorage.setItem('fx-intro', '1'); } catch {} });
     const p = await ctx.newPage();
@@ -31,7 +31,7 @@ for (const d of devices) {
     if (overflow.sw > overflow.iw || errs.length) fail++;
     console.log(d.name, path, 'scrollWidth', overflow.sw, '/', overflow.iw, overflow.bad.length ? overflow.bad : '', errs.length ? errs : '');
     await p.evaluate(() => scrollTo(0, 0)); await p.waitForTimeout(600);
-    await p.screenshot({ path: `${out}dev-${d.name}${path === '/' ? '' : '-oferta'}.png` });
+    await p.screenshot({ path: `${out}dev-${d.name}${path === '/' ? '' : '-proposta'}.png` });
     await ctx.close();
   }
 }

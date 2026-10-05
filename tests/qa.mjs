@@ -1,4 +1,4 @@
-// QA funcional: interações principais do site e da /oferta.
+// QA funcional: interações principais do site e da /proposta.
 import { chromium } from 'playwright';
 const base = process.env.BASE_URL ?? 'http://localhost:3000';
 const browser = await chromium.launch({ executablePath: process.env.CHROME ?? '/opt/pw-browsers/chromium' });
@@ -43,14 +43,14 @@ for (const mobile of [false, true]) {
   check(`${tag} sem erros JS`, errors.length === 0);
   await ctx.close();
 }
-// oferta
+// proposta
 const p = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-await p.goto(base + '/oferta', { waitUntil: 'networkidle' });
+await p.goto(base + '/proposta', { waitUntil: 'networkidle' });
 await p.keyboard.press('ArrowRight'); await p.keyboard.press('ArrowRight'); await p.waitForTimeout(500);
-check('[oferta] teclado → slide 3', (await p.locator('.of-count').innerText()).startsWith('03'));
+check('[proposta] teclado → slide 3', (await p.locator('.of-count').innerText()).startsWith('03'));
 await p.click('.of-top-invite'); await p.waitForTimeout(500);
-check('[oferta] atalho investimento', (await p.locator('.of-count').innerText()).startsWith('10'));
-check('[oferta] preço', await p.locator('text=R$ 9.600').first().isVisible());
+check('[proposta] atalho investimento', (await p.locator('.of-count').innerText()).startsWith('10'));
+check('[proposta] preço', await p.locator('text=R$ 9.600').first().isVisible());
 await browser.close();
 console.log('OK:', ok.length, '\n' + ok.join('\n'));
 if (fail.length) { console.log('FALHAS:\n' + fail.join('\n')); process.exit(1); }
