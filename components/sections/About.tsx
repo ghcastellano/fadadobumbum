@@ -12,13 +12,16 @@ export default function About() {
             <div className="relative mx-auto max-w-[560px]">
               <span aria-hidden="true" className="arch absolute -inset-3 border border-gold/40" />
               <ParallaxImage
-                src="/assets/img/enyla-poltrona-terracota.webp"
-                alt="Dra. Enyla Cerqueira de uniforme preto, sentada na poltrona terracota do consultório"
+                src="/assets/img/enyla-sobre.webp"
+                alt="Dra. Enyla Cerqueira de uniforme preto, sentada na poltrona terracota do consultório, com um copo d'água na mão"
                 sizes="(max-width: 1023px) 92vw, 560px"
                 className="arch aspect-[4/5] w-full"
+                quality={90}
                 imageClassName="object-cover object-[50%_20%]"
               />
-              <div className="absolute -bottom-6 right-4 rounded-2xl border border-ink/10 bg-ivory/90 px-5 py-4 shadow-[0_20px_50px_rgba(42,27,21,.15)] backdrop-blur sm:right-8">
+            </div>
+            <div className="mx-auto mt-8 flex max-w-[560px] justify-end">
+              <div className="rounded-2xl border border-ink/10 bg-ivory px-5 py-4 shadow-[0_20px_50px_rgba(42,27,21,.12)]">
                 <p className="text-[11px] font-medium uppercase tracking-[.2em] text-gold-deep">{contact.registry}</p>
                 <p className="mt-1 text-sm text-ink/80">{contact.role} · {contact.registryExtra}</p>
               </div>
