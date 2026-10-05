@@ -1,5 +1,6 @@
 'use client';
 
+import { useDesktopFx } from '@/lib/fx';
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, Plane } from 'lucide-react';
 import { useEffect, useRef } from 'react';
@@ -119,6 +120,7 @@ function FlightPath() {
 export default function Madrid() {
   const root = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
+  const fx = useDesktopFx();
   const { scrollYProgress } = useScroll({ target: root, offset: ['start end', 'end start'] });
   const x = useTransform(scrollYProgress, [0, 1], ['6%', '-28%']);
 
@@ -126,7 +128,7 @@ export default function Madrid() {
     <section id="madrid" ref={root} aria-labelledby="madrid-titulo" className="relative overflow-hidden bg-cream py-24 sm:py-28 lg:py-36">
       <motion.p
         aria-hidden="true"
-        style={reduced ? undefined : { x }}
+        style={fx ? { x } : undefined}
         className="text-outline pointer-events-none absolute left-0 top-10 whitespace-nowrap font-display text-[clamp(8rem,24vw,22rem)] italic leading-none text-rosedeep/25"
       >
         Madrid · España · Madrid

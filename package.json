@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "tsc --noEmit",
-    "qa": "node tests/qa.mjs"
+    "qa": "node tests/qa.mjs",
+    "rede": "next build && next start -H 0.0.0.0 -p 3000",
+    "perf:ipad": "node tests/perf-ipad.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.42.0",

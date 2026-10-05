@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useDesktopFx } from '@/lib/fx';
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowUpRight, Check } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -58,6 +59,7 @@ export default function Hero() {
   const root = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const base = useIntroDelay();
+  const fx = useDesktopFx();
   const { scrollYProgress } = useScroll({ target: root, offset: ['start start', 'end start'] });
   const copyY = useTransform(scrollYProgress, [0, 1], ['0%', '22%']);
   const copyOpacity = useTransform(scrollYProgress, [0, .75], [1, 0]);
@@ -74,14 +76,14 @@ export default function Hero() {
   const cardBY = useTransform(sy, (v) => v * 16);
 
   useEffect(() => {
-    if (reduced || !window.matchMedia('(pointer: fine)').matches) return;
+    if (!fx) return;
     const onMove = (event: PointerEvent) => {
       mx.set(event.clientX / window.innerWidth - .5);
       my.set(event.clientY / window.innerHeight - .5);
     };
     window.addEventListener('pointermove', onMove, { passive: true });
     return () => window.removeEventListener('pointermove', onMove);
-  }, [mx, my, reduced]);
+  }, [mx, my, fx]);
 
   return (
     <section id="inicio" ref={root} className="slats noise relative isolate min-h-[100svh] overflow-hidden text-cream lg:min-h-[max(100svh,760px)]">
@@ -125,7 +127,7 @@ export default function Hero() {
           <div className="absolute inset-0 -z-10 lg:relative lg:inset-auto lg:z-0 lg:mx-auto lg:aspect-[2/3] lg:w-full lg:max-w-[460px]">
             <span aria-hidden="true" className="arch absolute -inset-3 hidden border border-gold/45 lg:block" />
             <span aria-hidden="true" className="arch absolute -inset-6 hidden border border-gold/15 lg:block" />
-            <motion.div style={reduced ? undefined : { scale: imageScale }} className="absolute inset-0 overflow-hidden lg:arch">
+            <motion.div style={fx ? { scale: imageScale } : undefined} className="absolute inset-0 overflow-hidden lg:arch">
               <Image
                 src="/assets/img/enyla-hero.webp"
                 alt="Dra. Enyla Cerqueira sorrindo, de blusa nude drapeada, sentada em poltrona rosé diante do ripado de madeira"
@@ -141,7 +143,7 @@ export default function Hero() {
             <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/75 to-espresso/10 lg:hidden" />
             <div aria-hidden="true" className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-espresso/70 to-transparent lg:hidden" />
 
-            <motion.div style={reduced ? undefined : { x: cardAX, y: cardAY }} className="absolute -left-14 top-[16%] hidden lg:block xl:-left-20">
+            <motion.div style={fx ? { x: cardAX, y: cardAY } : undefined} className="absolute -left-14 top-[16%] hidden lg:block xl:-left-20">
               <motion.div
                 initial={reduced ? false : { opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -153,7 +155,7 @@ export default function Hero() {
               </motion.div>
             </motion.div>
 
-            <motion.div style={reduced ? undefined : { x: cardBX, y: cardBY }} className="absolute -right-8 bottom-[14%] hidden lg:block xl:-right-12">
+            <motion.div style={fx ? { x: cardBX, y: cardBY } : undefined} className="absolute -right-8 bottom-[14%] hidden lg:block xl:-right-12">
               <motion.div
                 initial={reduced ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -177,7 +179,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <motion.div style={reduced ? undefined : { y: copyY, opacity: copyOpacity }} className="relative z-10 max-w-[760px] lg:col-span-7 lg:row-start-1">
+        <motion.div style={fx ? { y: copyY, opacity: copyOpacity } : undefined} className="relative z-10 max-w-[760px] lg:col-span-7 lg:row-start-1">
           <p className="hero-fade eyebrow text-gold" style={{ ['--d' as string]: '.05s' }}>
             <span className="sm:hidden">Biomédica esteta · São Paulo</span>
             <span className="hidden sm:inline">Biomédica esteta · Harmonização glútea · SP</span>

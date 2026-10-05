@@ -62,7 +62,7 @@ export default function Header() {
           open
             ? 'bg-transparent text-cream'
             : scrolled
-              ? 'border-b border-ink/10 bg-cream/85 text-ink backdrop-blur-md'
+              ? 'header-glass border-b border-ink/10 bg-cream/85 text-ink backdrop-blur-md'
               : 'border-b border-cream/10 bg-gradient-to-b from-espresso/70 to-transparent text-cream'
         }`}
       >

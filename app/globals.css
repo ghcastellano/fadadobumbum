@@ -273,3 +273,12 @@ html:not(.intro-seen) .hero-rise { --intro: 1.7s; }
 @keyframes hero-fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 .hero-fade { animation: hero-fade .9s cubic-bezier(.22, 1, .36, 1) both; animation-delay: calc(var(--d, 0s) + var(--intro, 0s)); }
 html:not(.intro-seen) .hero-fade { --intro: 1.7s; }
+
+/* ---------- telas de toque (celular, iPad) ----------
+ * O Safari rola fora da thread principal: tudo que repinta a cada quadro
+ * de rolagem (desfoque do header fixo, ruído com blend em seções inteiras)
+ * custa fluidez. Aqui o visual fica igual, só que pintado uma vez. */
+@media (any-pointer: coarse) {
+  .noise::after { display: none; }
+  .header-glass { background-color: rgba(247, 240, 232, .97); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}

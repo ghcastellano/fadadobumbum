@@ -2,14 +2,15 @@
 
 import { useEffect } from 'react';
 import type Lenis from 'lenis';
+import { isDesktopFx } from '@/lib/fx';
 
 /**
- * Scroll suave (Lenis) só para ponteiro preciso e sem prefers-reduced-motion;
- * no toque o scroll nativo é mantido. Âncoras internas passam pelo Lenis.
+ * Scroll suave (Lenis) só com mouse/trackpad, sem toque e sem prefers-reduced-motion;
+ * no toque (celular, iPad) o scroll nativo é mantido. Âncoras internas passam pelo Lenis.
  */
 export default function SmoothScroll() {
   useEffect(() => {
-    if (!window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches) return;
+    if (!isDesktopFx()) return;
 
     let lenis: Lenis | null = null;
     let frame = 0;

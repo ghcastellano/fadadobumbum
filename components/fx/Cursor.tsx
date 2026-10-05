@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { isDesktopFx } from '@/lib/fx';
 
 type Mode = 'default' | 'link' | 'view';
 
@@ -17,7 +18,7 @@ export default function Cursor() {
   const ringY = useSpring(y, { stiffness: 360, damping: 32, mass: .55 });
 
   useEffect(() => {
-    if (!window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches) return;
+    if (!isDesktopFx()) return;
     setEnabled(true);
     document.documentElement.classList.add('fx-cursor');
     const onMove = (event: PointerEvent) => {

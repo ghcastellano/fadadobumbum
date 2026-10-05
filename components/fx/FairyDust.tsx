@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { isDesktopFx } from '@/lib/fx';
 
 type Spark = { x: number; y: number; vx: number; vy: number; life: number; max: number; size: number; hue: number; spin: number; rot: number };
 
@@ -15,7 +16,7 @@ export default function FairyDust() {
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) return;
-    const fine = window.matchMedia('(pointer: fine)').matches;
+    const fine = isDesktopFx();
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
     if (!canvas || !ctx) return;
